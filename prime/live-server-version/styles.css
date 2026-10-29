@@ -1,0 +1,1020 @@
+:root {
+  --bg: #090909;
+  --bg-elevated: #121212;
+  --panel: #171717;
+  --panel-soft: #1f1f1f;
+  --white: #f5f3ef;
+  --off-white: #e8e1d7;
+  --gray-light: #cfc9c2;
+  --gray-mid: #8b8a88;
+  --gray-dark: #272727;
+  --gold: #d4af68;
+  --gold-soft: rgba(212, 175, 104, 0.12);
+  --gold-deep: #b98b2a;
+  --line: rgba(255,255,255,0.1);
+  --shadow: rgba(0,0,0,0.35);
+  --danger: #e16d6d;
+  --glass: rgba(255, 255, 255, 0.06);
+  --glass-strong: rgba(255, 255, 255, 0.1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: 'Plus Jakarta Sans', 'Segoe UI', sans-serif;
+  background:
+    linear-gradient(180deg, rgba(7,7,7,0.96), rgba(15,15,15,1)),
+    url('../assets/barbershop-hero.jpg') center/cover no-repeat fixed;
+  color: var(--white);
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(circle at 12% 14%, rgba(212,175,104,0.26), transparent 24%),
+    radial-gradient(circle at 80% 0%, rgba(255,255,255,0.12), transparent 24%),
+    linear-gradient(135deg, rgba(0,0,0,0.18), rgba(0,0,0,0.5));
+  pointer-events: none;
+  z-index: 0;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  right: -130px;
+  top: 180px;
+  width: 460px;
+  height: 460px;
+  background:
+    url('../assets/barbershop-hero.jpg') center/cover no-repeat;
+  opacity: 0.18;
+  filter: blur(8px) saturate(0.85);
+  transform: rotate(-15deg);
+  pointer-events: none;
+  z-index: 0;
+}
+
+main,
+header,
+footer {
+  position: relative;
+  z-index: 1;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+h1,
+h2,
+h3,
+.brand-name,
+.brand-subtitle {
+  font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+  letter-spacing: 0.02em;
+}
+
+.container {
+  width: min(1180px, calc(100% - 2rem));
+  margin: 0 auto;
+}
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  background: rgba(9, 9, 9, 0.8);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0.9;
+  min-height: 54px;
+}
+
+.brand-logo {
+  display: block;
+  max-height: 140px;
+  width: auto;
+  filter: drop-shadow(0 8px 18px rgba(212,175,104,0.18));
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(255,255,255,0.82);
+}
+
+.nav a {
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+.nav a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -0.35rem;
+  width: 100%;
+  height: 1px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+}
+
+.nav a:hover {
+  color: var(--gold);
+}
+
+.nav a:hover::after {
+  transform: scaleX(1);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 999px;
+  padding: 0.9rem 1.45rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.18), 0 18px 30px rgba(0,0,0,0.18);
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.2), 0 22px 36px rgba(0,0,0,0.2);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, rgba(212,175,104,0.95), rgba(244,214,153,0.88));
+  color: #171611;
+  border-color: rgba(255,255,255,0.32);
+}
+
+.btn-secondary {
+  background: rgba(255,255,255,0.05);
+  color: var(--white);
+  border-color: rgba(255,255,255,0.12);
+}
+
+.full-width { width: 100%; }
+
+.hero {
+  position: relative;
+  display: grid;
+  min-height: 80vh;
+  align-items: end;
+  background:
+    linear-gradient(90deg, rgba(9,9,9,0.86) 0%, rgba(9,9,9,0.45) 40%, rgba(9,9,9,0.72) 100%),
+    url('../assets/barbershop-hero.jpg') center/cover no-repeat;
+  background-size: cover;
+  background-position: center;
+  box-shadow: inset 0 -80px 100px rgba(0,0,0,0.5);
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(9,9,9,0.08), rgba(9,9,9,0.82));
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  padding: 5rem 0 5.5rem;
+}
+
+.hero h1 {
+  max-width: 780px;
+  margin: 0;
+  font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+  font-size: clamp(3.5rem, 8vw, 7.2rem);
+  line-height: 0.82;
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+  white-space: pre-line;
+  color: var(--white);
+  font-weight: 700;
+}
+
+.hero p {
+  max-width: 600px;
+  margin-top: 1.2rem;
+  color: rgba(245,243,239,0.82);
+  font-size: 1.08rem;
+  line-height: 1.8;
+}
+
+.hero-visual {
+  position: absolute;
+  right: clamp(1rem, 5vw, 8rem);
+  bottom: 3rem;
+  width: min(36vw, 420px);
+  height: min(36vw, 420px);
+  pointer-events: none;
+}
+
+.float-tool {
+  position: absolute;
+  width: 48%;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 24px 36px rgba(0,0,0,0.34));
+  opacity: 0.95;
+  user-select: none;
+  pointer-events: none;
+}
+
+.float-tool.razor {
+  right: 0;
+  bottom: 2.5rem;
+  transform: rotate(18deg);
+}
+
+.float-tool.scissors {
+  left: 0.5rem;
+  bottom: 0;
+  transform: rotate(-22deg);
+  width: 42%;
+}
+
+.hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  margin-top: 2rem;
+}
+
+.services,
+.products,
+.pros,
+.about,
+.footer {
+  padding: 5.5rem 0;
+}
+
+h2 {
+  margin: 0 0 1.35rem;
+  font-size: clamp(2.3rem, 4vw, 3.5rem);
+  letter-spacing: -0.04em;
+  font-weight: 700;
+}
+
+.category-tabs {
+  display: flex;
+  gap: 0.75rem;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+  margin: 1.8rem 0 2rem;
+}
+
+.category-tab {
+  border: 1px solid rgba(255,255,255,0.12);
+  background: transparent;
+  color: rgba(255,255,255,0.74);
+  border-radius: 999px;
+  padding: 0.8rem 1.2rem;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.72rem;
+}
+
+.category-tab.active {
+  background: rgba(212,175,104,0.12);
+  color: var(--white);
+  border-color: rgba(212,175,104,0.7);
+  box-shadow: inset 0 0 0 1px rgba(212,175,104,0.6);
+}
+
+.services-grid,
+.products-grid,
+.pros-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.service-card,
+.product-card,
+.pro-card,
+.admin-card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.04));
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 1.3rem;
+  overflow: hidden;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.12), 0 24px 48px rgba(0,0,0,0.18);
+}
+
+.service-photo,
+.product-photo {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 4 / 3;
+  background: linear-gradient(135deg, rgba(212,175,104,0.12), rgba(255,255,255,0.06));
+  color: rgba(255,255,255,0.42);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.service-photo img,
+.product-photo img,
+.pro-avatar img {
+  transition: transform 0.35s ease;
+}
+
+.service-card:hover .service-photo img,
+.product-card:hover .product-photo img,
+.pro-card:hover .pro-avatar img {
+  transform: scale(1.04);
+}
+
+.service-photo img,
+.pro-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.service-body,
+.product-body,
+.pro-body {
+  padding: 1.35rem 1.3rem 1.5rem;
+}
+
+.service-header,
+.product-header,
+.pro-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.8rem;
+}
+
+.service-card h3,
+.pro-card h3 {
+  margin: 0;
+  font-size: 1.38rem;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+.service-price,
+.product-price {
+  color: var(--gold);
+  font-weight: 800;
+  font-size: 1.2rem;
+}
+
+.service-duration,
+.product-tag,
+.pro-specialties {
+  color: rgba(255,255,255,0.5);
+  margin-top: 0.35rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.service-description,
+.product-body p,
+.pro-description {
+  color: rgba(255,255,255,0.75);
+  line-height: 1.8;
+  margin-top: 0.9rem;
+}
+
+.service-card button,
+.product-card button,
+.pro-option button {
+  width: 100%;
+  margin-top: 1rem;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--gold);
+  border: 1px solid rgba(212,175,104,0.8);
+  padding: 0.82rem 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.service-card button:hover,
+.product-card button:hover,
+.pro-option button:hover {
+  background: rgba(212,175,104,0.08);
+}
+
+.experience {
+  padding: 5.5rem 0 2rem;
+}
+
+.experience-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  align-items: center;
+  gap: 2rem;
+}
+
+.section-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.gold {
+  color: var(--gold) !important;
+}
+
+.eyebrow {
+  margin: 0;
+  color: var(--gold);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.experience-copy h2,
+.section-heading h2 {
+  margin-top: 0.5rem;
+}
+
+.experience-copy p {
+  color: rgba(255,255,255,0.72);
+  line-height: 1.8;
+}
+
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(120px, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.stats-row div {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 1rem;
+  padding: 1.1rem 0.9rem;
+  text-align: center;
+}
+
+.stats-row strong {
+  display: block;
+  color: var(--gold);
+  font-size: 1.6rem;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+.stats-row span {
+  display: block;
+  color: rgba(255,255,255,0.7);
+  font-size: 0.8rem;
+  margin-top: 0.2rem;
+}
+
+.experience-visual {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 1rem;
+  align-items: end;
+}
+
+.visual-card {
+  overflow: hidden;
+  border-radius: 1.6rem;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.1), 0 25px 50px rgba(0,0,0,0.28);
+}
+
+.visual-card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.visual-card.tall {
+  height: 500px;
+}
+
+.visual-card.small {
+  height: 360px;
+}
+
+.gallery-strip {
+  padding: 1rem 0 3rem;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr 1fr;
+  gap: 1rem;
+}
+
+.gallery-card {
+  border-radius: 1.5rem;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.10);
+  min-height: 260px;
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(12px);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.1), 0 18px 35px rgba(0,0,0,0.16);
+}
+
+.gallery-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.gallery-card.wide {
+  min-height: 300px;
+}
+
+.about {
+  background: linear-gradient(180deg, #f5f3ef 0%, #ece7df 100%);
+  color: var(--bg);
+}
+
+.about .narrow {
+  max-width: 900px;
+}
+
+.about h2 {
+  color: #111;
+}
+
+.about p {
+  color: rgba(17,17,17,0.75);
+  font-size: 1.08rem;
+  line-height: 1.9;
+}
+
+.footer {
+  color: rgba(255,255,255,0.9);
+  line-height: 1.8;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding-top: 1.5rem;
+}
+
+.contact-shell {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 2rem;
+  align-items: center;
+  padding: 2rem 0 1rem;
+}
+
+.contact-copy {
+  background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 1.8rem;
+  padding: 2rem;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.contact-copy p,
+.contact-copy div {
+  color: rgba(255,255,255,0.8);
+}
+
+.contact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.3rem;
+}
+
+.contact-visual {
+  position: relative;
+  min-height: 260px;
+  border-radius: 2rem;
+  background:
+    linear-gradient(180deg, rgba(9,9,9,0.16), rgba(9,9,9,0.72)),
+    url('../assets/barbershop-hero.jpg') center/cover no-repeat;
+  border: 1px solid rgba(255,255,255,0.06);
+  overflow: hidden;
+}
+
+.tool-tool {
+  position: absolute;
+  width: 52%;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 20px 40px rgba(0,0,0,0.35));
+}
+
+.tool-tool.razor {
+  right: 2%;
+  bottom: 8%;
+  transform: rotate(22deg);
+}
+
+.tool-tool.scissors {
+  left: 10%;
+  top: 18%;
+  transform: rotate(-18deg);
+}
+
+.footer h2 {
+  margin-bottom: 0.5rem;
+}
+
+#instagram-link a {
+  color: var(--gold);
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: rgba(0,0,0,0.72);
+  z-index: 99;
+  overflow-y: auto;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-content {
+  width: min(92vw, 38rem);
+  max-height: min(88vh, 52rem);
+  overflow-y: auto;
+  background: linear-gradient(180deg, #111111, #171717);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 1.25rem;
+  padding: 1.6rem;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.45);
+  scrollbar-width: thin;
+  scrollbar-color: rgba(212,175,104,0.5) rgba(255,255,255,0.04);
+}
+
+.modal h2 {
+  font-size: clamp(1.7rem, 2.5vw, 2.5rem);
+  margin-bottom: 0.6rem;
+}
+
+.modal-subtext {
+  color: rgba(255,255,255,0.7);
+  margin: 0;
+  line-height: 1.7;
+}
+
+.modal-service-name {
+  margin-top: 1rem;
+  color: rgba(255,255,255,0.82);
+}
+
+.pro-option {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  width: 100%;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 1rem;
+  background: rgba(255,255,255,0.01);
+  color: var(--text);
+  margin-top: 0.9rem;
+  padding: 0.9rem;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pro-option.active {
+  border-color: rgba(212,175,104,0.8);
+  background: rgba(212,175,104,0.08);
+}
+
+.pro-avatar {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(212,175,104,0.2), rgba(255,255,255,0.05));
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.pro-meta strong {
+  display: block;
+}
+
+.pro-meta small {
+  display: block;
+  color: var(--gold);
+  margin-top: 0.2rem;
+}
+
+.pro-meta span {
+  display: block;
+  color: rgba(255,255,255,0.7);
+  margin-top: 0.25rem;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 0.8rem;
+  margin-top: 1.5rem;
+}
+
+.modal-actions button,
+.modal-actions a {
+  flex: 1;
+}
+
+.summary-list {
+  display: grid;
+  gap: 0.8rem;
+  margin-top: 1rem;
+}
+
+.summary-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.summary-item small {
+  color: rgba(255,255,255,0.55);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.summary-item strong {
+  font-size: 1.15rem;
+}
+
+.summary-amount {
+  color: var(--gold);
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.empty-state {
+  color: rgba(255,255,255,0.7);
+  margin-top: 0.75rem;
+  border: 1px solid rgba(255,255,255,0.12);
+  padding: 0.8rem 1rem;
+  border-radius: 0.8rem;
+  background: rgba(255,255,255,0.02);
+}
+
+.admin-page {
+  padding: 2.5rem 0 4rem;
+}
+
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.eyebrow {
+  margin: 0;
+  color: var(--gold);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.admin-header h1 {
+  margin: 0.4rem 0 0;
+  font-size: clamp(2.3rem, 5vw, 3.1rem);
+}
+
+.admin-actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.admin-section {
+  background: linear-gradient(180deg, rgba(18,18,18,0.96), rgba(12,12,12,0.96));
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 1.25rem;
+  padding: 1.6rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 12px 22px rgba(0,0,0,0.2);
+}
+
+.admin-section h2 {
+  margin-bottom: 1rem;
+  font-size: 1.9rem;
+}
+
+.admin-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.admin-field {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.admin-field.full {
+  grid-column: 1 / -1;
+}
+
+.admin-field label {
+  color: rgba(255,255,255,0.77);
+  font-size: 0.88rem;
+  letter-spacing: 0.03em;
+}
+
+.admin-field input,
+.admin-field textarea {
+  width: 100%;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(9,9,9,0.7);
+  color: var(--white);
+  border-radius: 0.9rem;
+  padding: 0.9rem 1rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.admin-field input:focus,
+.admin-field textarea:focus {
+  outline: none;
+  border-color: rgba(212,175,104,0.8);
+  box-shadow: 0 0 0 3px rgba(212,175,104,0.12);
+}
+
+.admin-card {
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+.card-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 0.8rem;
+}
+
+.remove-btn {
+  background: transparent;
+  border: none;
+  color: var(--danger);
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.add-btn {
+  background: transparent;
+  border: 1px solid rgba(212,175,104,0.8);
+  color: var(--gold);
+  border-radius: 999px;
+  padding: 0.8rem 1rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.checkbox-row {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  color: rgba(255,255,255,0.8);
+}
+
+.login-screen {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(circle at top, rgba(212,175,104,0.16), transparent 30%),
+    linear-gradient(180deg, #090909, #121212);
+  padding: 2rem;
+}
+
+.login-card {
+  width: min(100%, 460px);
+  background: linear-gradient(180deg, rgba(19,19,19,0.98), rgba(12,12,12,0.96));
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 1.4rem;
+  padding: 2rem;
+  box-shadow: 0 18px 38px rgba(0,0,0,0.28);
+}
+
+.login-card h1 {
+  margin: 0.5rem 0 1.25rem;
+  font-size: clamp(2.2rem, 5vw, 2.8rem);
+}
+
+.login-form {
+  display: grid;
+  gap: 1rem;
+}
+
+.login-form label {
+  display: grid;
+  gap: 0.45rem;
+  color: rgba(255,255,255,0.8);
+}
+
+.login-form input {
+  width: 100%;
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 0.85rem;
+  padding: 0.9rem 1rem;
+  background: rgba(9,9,9,0.7);
+  color: var(--white);
+}
+
+@media (max-width: 820px) {
+  .experience-grid,
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stats-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .nav { display: none; }
+  .header-actions { gap: 0.5rem; }
+  .admin-header { flex-direction: column; align-items: flex-start; }
+  .admin-actions { width: 100%; }
+  .admin-actions .btn { flex: 1; }
+  .modal-content { padding: 1rem; }
+  .hero h1 { max-width: 500px; }
+  .experience-visual { grid-template-columns: 1fr; }
+  .visual-card.tall,
+  .visual-card.small { height: 280px; }
+}
